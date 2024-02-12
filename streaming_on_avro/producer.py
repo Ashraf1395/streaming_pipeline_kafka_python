@@ -72,6 +72,7 @@ class RideAvroProducer:
                                       value=self.value_serializer(value, SerializationContext(topic=topic,
                                                                                               field=MessageField.VALUE)),
                                       on_delivery=delivery_report)
+                sleep(1)
             except KeyboardInterrupt:
                 break
             except Exception as e:

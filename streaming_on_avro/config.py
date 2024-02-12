@@ -1,4 +1,4 @@
-INPUT_DATA_PATH = '../resources/rides.csv'
+INPUT_DATA_PATH = './data/rides.csv'
 
 RIDE_KEY_SCHEMA_PATH = '../data/schemas/taxi_rides_key.avsc'
 RIDE_VALUE_SCHEMA_PATH = '../data/schemas/taxi_rides_value.avsc'
