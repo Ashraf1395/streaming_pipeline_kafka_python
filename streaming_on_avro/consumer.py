@@ -49,14 +49,16 @@ class RideAvroConsumer:
                     continue
                 key = self.avro_key_deserializer(msg.key(), SerializationContext(msg.topic(), MessageField.KEY))
                 record = self.avro_value_deserializer(msg.value(),
-                                                      SerializationContext(msg.topic(), MessageField.VALUE))
+                                                      SerializationContext(msg.topic(), MessageField.VALUE , msg.offset()))
+               # print(f'Message consumed for Topic:{msg.topic()} and Offset:{msg.offset()}')
                 if record is not None:
                     print("{}, {}".format(key, record))
             except KeyboardInterrupt:
                 break
 
         self.consumer.close()
-
+# RideRecordKey: {'vendor_id': 1}, 
+# RideRecord: {'vendor_id': 1, 'passenger_count': 1, 'trip_distance': 0.800000011920929, 'payment_type': 2, 'total_amount': 10.300000190734863}
 
 if __name__ == "__main__":
     config = {

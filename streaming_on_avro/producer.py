@@ -46,10 +46,9 @@ class RideAvroProducer:
     @staticmethod
     def delivery_report(err, msg):
         if err is not None:
-            print("Delivery failed for record {}: {}".format(msg.key(), err))
+            print(f"Delivery failed for record {msg.key()}: {err}")
             return
-        print('Record {} successfully produced to {} [{}] at offset {}'.format(
-            msg.key(), msg.topic(), msg.partition(), msg.offset()))
+        print(f'Record {msg.key()} successfully produced to {msg.topic} [{msg.partition}] at offset {msg.offset}')
 
     @staticmethod
     def read_records(resource_path: str):
